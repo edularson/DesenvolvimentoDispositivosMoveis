@@ -19,13 +19,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   PlayerHelper helper = PlayerHelper();
   
-  // *** MUDANÇAS PARA BUSCA ***
-  List<Player> allPlayers = []; // Lista original com todos os jogadores
-  List<Player> displayedPlayers = []; // Lista filtrada para exibição
+  List<Player> allPlayers = []; 
+  List<Player> displayedPlayers = [];
   
-  bool _isSearching = false; // Controla se a barra de busca está ativa
+  bool _isSearching = false; 
   final TextEditingController _searchController = TextEditingController();
-  // *** FIM DAS MUDANÇAS ***
 
 
   @override
@@ -33,13 +31,11 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _getAllPlayers(); 
     
-    // Adiciona um 'listener' que chama a função de filtro a cada letra digitada
     _searchController.addListener(_filterPlayers);
   }
 
   @override
   void dispose() {
-    // Limpa o controller da memória
     _searchController.removeListener(_filterPlayers);
     _searchController.dispose();
     super.dispose();
@@ -48,31 +44,26 @@ class _HomePageState extends State<HomePage> {
   void _getAllPlayers() {
     helper.getAllPlayers().then((list) {
       setState(() {
-        allPlayers = list; // Salva na lista original
-        displayedPlayers = list; // E na lista de exibição
+        allPlayers = list; 
+        displayedPlayers = list; 
       });
     });
   }
   
-  // *** NOVA FUNÇÃO DE FILTRO ***
   void _filterPlayers() {
     String query = _searchController.text.toLowerCase();
     setState(() {
       displayedPlayers = allPlayers.where((player) {
-        // Filtra pelo nome do jogador
         return player.name.toLowerCase().contains(query);
       }).toList();
     });
   }
 
-  // *** NOVA FUNÇÃO PARA TROCAR A APPBAR ***
   void _toggleSearch() {
     setState(() {
       _isSearching = !_isSearching;
       if (!_isSearching) {
-        // Se fechou a busca, limpa o filtro e reseta a lista
         _searchController.clear(); 
-        // _filterPlayers(); // O listener já faz isso
       }
     });
   }
@@ -80,7 +71,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // A AppBar agora é construída por uma função
       appBar: _buildAppBar(),
       
       floatingActionButton: FloatingActionButton(
@@ -104,7 +94,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Expanded( 
-            // O Grid agora usa a lista 'displayedPlayers'
             child: GridView.builder(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 10), 
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -124,27 +113,24 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // *** NOVA FUNÇÃO QUE CONSTRÓI A APPBAR CORRETA ***
   PreferredSizeWidget _buildAppBar() {
     if (_isSearching) {
-      // --- AppBar de Busca (Ativa) ---
       return AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.close), // Ícone de "X" para fechar
-          onPressed: _toggleSearch, // Chama a função que troca o estado
+          icon: const Icon(Icons.close), 
+          onPressed: _toggleSearch, 
         ),
         title: TextField(
           controller: _searchController,
-          autofocus: true, // Foca no campo de texto automaticamente
+          autofocus: true, 
           decoration: const InputDecoration(
             hintText: "Buscar jogador por nome...",
-            border: InputBorder.none, // Sem linha embaixo
+            border: InputBorder.none, 
             hintStyle: TextStyle(color: Colors.white70),
           ),
           style: const TextStyle(color: Colors.white, fontSize: 18),
         ),
         actions: [
-          // Ícone de "limpar" o texto
           IconButton(
             icon: const Icon(Icons.clear),
             onPressed: () {
@@ -154,7 +140,6 @@ class _HomePageState extends State<HomePage> {
         ],
       );
     } else {
-      // --- AppBar Normal ---
       return AppBar(
         centerTitle: true,
         leading: Padding( 
@@ -168,7 +153,7 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton( 
             icon: const Icon(Icons.search), 
-            onPressed: _toggleSearch, // Chama a função que troca o estado
+            onPressed: _toggleSearch, 
           ),
           PopupMenuButton<OrderOptions>(
             itemBuilder: (context) => <PopupMenuEntry<OrderOptions>>[
@@ -189,7 +174,6 @@ class _HomePageState extends State<HomePage> {
   }
 
 
-  /// Constrói o card do jogador (Sem alterações)
   Widget _buildPlayerGridItem(BuildContext context, Player player) {
     int overall = _calculateOverall(player);
 
@@ -255,7 +239,7 @@ class _HomePageState extends State<HomePage> {
                   child: Text(
                     overall.toString(),
                     style: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary, // Dourado
+                      color: Theme.of(context).colorScheme.secondary, 
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
@@ -289,7 +273,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     const SizedBox(height: 8.0),
-                    _buildReadOnlyStars(player.rating), // Estrelas
+                    _buildReadOnlyStars(player.rating), 
                   ],
                 ),
               ),
@@ -300,7 +284,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // Função para calcular o Overall (Sem alterações)
   int _calculateOverall(Player player) {
     if (player.rating == null || player.rating == 0) return 60; 
     int baseOverall = 60 + (player.rating! * 6).toInt(); 
@@ -310,7 +293,6 @@ class _HomePageState extends State<HomePage> {
     return baseOverall.clamp(40, 99); 
   }
 
-  // Função para as estrelas (Sem alterações)
   Widget _buildReadOnlyStars(double? rating) {
     double currentRating = rating ?? 0.0;
     return Row(
@@ -318,14 +300,13 @@ class _HomePageState extends State<HomePage> {
       children: List.generate(5, (index) {
         return Icon(
           index < currentRating ? Icons.star : Icons.star_border,
-          color: Theme.of(context).colorScheme.secondary, // Dourado
+          color: Theme.of(context).colorScheme.secondary, 
           size: 16, 
         );
       }),
     );
   }
 
-  // Função para abrir Info (Sem alterações)
   void _showPlayerInfoPage(Player player) async {
     final result = await Navigator.push(
       context,
@@ -336,7 +317,6 @@ class _HomePageState extends State<HomePage> {
     if (result != null) _getAllPlayers();
   }
 
-  // Função para abrir Edição/Criação (Sem alterações)
   void _showPlayerPage({Player? player}) async {
     final newPlayer = await Navigator.push(
       context,
@@ -347,7 +327,6 @@ class _HomePageState extends State<HomePage> {
     if (newPlayer != null) _getAllPlayers();
   }
 
-  // Função de Ordenação (Sem alterações)
   void _orderList(OrderOptions result) {
     switch (result) {
       case OrderOptions.orderAZ:
@@ -361,7 +340,6 @@ class _HomePageState extends State<HomePage> {
         });
         break;
     }
-    // Aplica o filtro novamente após ordenar
     _filterPlayers();
   }
 }

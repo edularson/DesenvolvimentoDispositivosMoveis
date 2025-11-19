@@ -6,15 +6,12 @@ class PlayerDetailPage extends StatelessWidget {
 
   const PlayerDetailPage({Key? key, required this.player}) : super(key: key);
 
-  // --- NOVA PALETA DE CORES ---
   final Color corFundo = const Color(0xFF121212);
   final Color corCard = const Color(0xFF1E1E1E);
   final Color corDestaqueOuro = const Color(0xFFD4AF37);
-  // --- FIM DA PALETA ---
 
   @override
   Widget build(BuildContext context) {
-    // Pega os dados do map
     final String? fotoUrl = player['strRender'] ?? player['strCutout'] ?? player['strThumb'];
     final String nome = player['strPlayer'] ?? "Jogador Desconhecido";
     final String nacionalidade = player['strNationality'] ?? "N/A";
@@ -30,12 +27,11 @@ class PlayerDetailPage extends StatelessWidget {
         elevation: 0,
         title: Text(
           nome,
-          // Usando a fonte Poppins
           style: GoogleFonts.poppins(textStyle: TextStyle(color: Colors.white)),
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: corDestaqueOuro), // Ícone Dourado
+          icon: Icon(Icons.arrow_back, color: corDestaqueOuro), 
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -43,11 +39,10 @@ class PlayerDetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // --- FOTO DO JOGADOR ---
             if (fotoUrl != null)
               Container(
                 height: 300,
-                color: corCard, // Fundo cinza escuro para a foto
+                color: corCard, 
                 child: Image.network(
                   fotoUrl,
                   fit: BoxFit.contain,
@@ -61,7 +56,6 @@ class PlayerDetailPage extends StatelessWidget {
                 child: Icon(Icons.person, size: 150, color: Colors.grey[700]),
               ),
             
-            // --- TÍTULO E DETALHES ---
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -74,7 +68,6 @@ class PlayerDetailPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10),
-                  // Chips de informação
                   Wrap(
                     spacing: 8.0,
                     runSpacing: 4.0,
@@ -114,7 +107,6 @@ class PlayerDetailPage extends StatelessWidget {
                     ],
                   ),
 
-                  // --- DESCRIÇÃO ---
                   SizedBox(height: 20),
                   Text(
                     "Biografia",

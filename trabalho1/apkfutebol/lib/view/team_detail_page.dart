@@ -5,16 +5,13 @@ class TeamDetailPage extends StatelessWidget {
   final Map<String, dynamic> team;
   const TeamDetailPage({Key? key, required this.team}) : super(key: key);
 
-  // --- PALETA DE CORES PROFISSIONAL ---
   final Color corFundo = const Color(0xFF121212);
   final Color corCard = const Color(0xFF1E1E1E);
   final Color corDestaqueOuro = const Color(0xFFD4AF37);
-  // --- FIM DA PALETA ---
 
   @override
   Widget build(BuildContext context) {
     final String? bannerUrl = team['strTeamBanner'] ?? team['strStadiumThumb'];
-    // Lembre-se: O logoUrl provavelmente será nulo
     final String? logoUrl = team['strTeamBadge'] ?? team['strTeamLogo'] ?? team['strTeamJersey'];
     final String nome = team['strTeam'] ?? "Time Desconhecido";
     final String ano = team['intFormedYear'] ?? "N/A";

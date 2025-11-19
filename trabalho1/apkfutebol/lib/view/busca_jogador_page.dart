@@ -92,7 +92,6 @@ class _BuscaJogadorPageState extends State<BuscaJogadorPage> {
       appBar: AppBar(
         backgroundColor: corFundo,
         elevation: 0,
-        // O leading (ícone da bola) foi trocado por um botão de voltar
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios, color: corDestaqueOuro),
           onPressed: () => Navigator.of(context).pop(),
@@ -102,7 +101,6 @@ class _BuscaJogadorPageState extends State<BuscaJogadorPage> {
           style: GoogleFonts.poppins(textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w600)),
         ),
         centerTitle: true,
-        // Ícones de pesquisa e 3 pontinhos REMOVIDOS
         actions: [], 
       ),
       body: Padding(
@@ -170,7 +168,7 @@ class _BuscaJogadorPageState extends State<BuscaJogadorPage> {
         key: const Key('lista_grid'),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 0.75, // Ajustei um pouco a proporção
+          childAspectRatio: 0.75, 
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
         ),
@@ -203,7 +201,6 @@ class _BuscaJogadorPageState extends State<BuscaJogadorPage> {
   }
 }
 
-// --- COMPONENTE DO CARD (ATUALIZADO) ---
 
 class PlayerCard extends StatelessWidget {
   final Map<String, dynamic> jogador;
@@ -215,7 +212,6 @@ class PlayerCard extends StatelessWidget {
     required this.onTap,
   }) : super(key: key);
 
-  // Função de estrelas REMOVIDA
 
   @override
   Widget build(BuildContext context) {
@@ -238,13 +234,11 @@ class PlayerCard extends StatelessWidget {
             )
           ]
         ),
-        // Stack REMOVIDO (pois não temos mais o rating)
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Foto com borda dourada
               CircleAvatar(
                 radius: 52,
                 backgroundColor: const Color(0xFFD4AF37),
@@ -277,7 +271,6 @@ class PlayerCard extends StatelessWidget {
                   textStyle: TextStyle(color: Colors.grey[500], fontSize: 14),
                 ),
               ),
-              // Chamada para as estrelas REMOVIDA
             ],
           ),
         ),

@@ -238,8 +238,6 @@ class _PlayerInfoPageState extends State<PlayerInfoPage> {
       ),
       child: Row(
         children: [
-          // *** MUDANÇA AQUI ***
-          // O ícone agora usa a cor 'primary' (Verde)
           Icon(icon, color: Theme.of(context).colorScheme.primary, size: 24),
           const SizedBox(width: 8),
           Column(
@@ -263,7 +261,7 @@ class _PlayerInfoPageState extends State<PlayerInfoPage> {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 6.0),
       child: ListTile(
-        leading: Icon(icon, color: Theme.of(context).colorScheme.secondary, size: 30), // Dourado
+        leading: Icon(icon, color: Theme.of(context).colorScheme.secondary, size: 30),
         title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text(subtitle, style: const TextStyle(fontSize: 16)),
       ),

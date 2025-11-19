@@ -1,12 +1,12 @@
-# 📱 Repositório da Disciplina: Desenvolvimento para Dispositivos Móveis
+# Repositório da Disciplina: Desenvolvimento para Dispositivos Móveis
 
 Este repositório armazena os trabalhos desenvolvidos para a disciplina de Desenvolvimento para Dispositivos Móveis utilizando o framework **Flutter**.
 
-## ⚽ Trabalho 1: App de Busca de Jogadores (API)
+## Trabalho 1: App de Busca de Jogadores (API)
 
 O primeiro trabalho consistiu na criação de um aplicativo para consulta de informações sobre futebol, consumindo uma API externa.
 
-### ✨ Principais Funcionalidades
+### Principais Funcionalidades
 
 * **Consumo de API:** Integração com a **TheSportsDB API** para permitir a busca de jogadores e times pelo *nome*, oferecendo uma experiência de usuário mais intuitiva do que a busca por ID.
 * **Interface Profissional (Dark Mode):** Design focado em "dark mode" com uma paleta de cores moderna (preto, dourado e verde neon) e fontes personalizadas (Poppins), inspirado em aplicativos de esporte.
@@ -21,11 +21,11 @@ O primeiro trabalho consistiu na criação de um aplicativo para consulta de inf
 
 ---
 
-## 💾 Trabalho 2: Gerenciador de Jogadores (SQLite)
+## Trabalho 2: Gerenciador de Jogadores (SQLite)
 
 O segundo trabalho teve como objetivo a criação de um aplicativo para o gerenciamento de jogadores de futebol, com foco principal na **persistência de dados locais**.
 
-### ✨ Principais Funcionalidades
+### Principais Funcionalidades
 
 * **CRUD Local:** Implementação completa das operações de Criar, Ler, Atualizar e Deletar (CRUD) jogadores diretamente no banco de dados do dispositivo.
 * **Cadastro Avançado:**

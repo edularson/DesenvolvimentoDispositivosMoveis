@@ -22,7 +22,6 @@ class PlayerHelper {
     final databasePath = await getDatabasesPath();
     final path = join(databasePath, "playersDB.db");
 
-    // Lembre-se de desinstalar o app para esta mudança funcionar!
     return await openDatabase(path, version: 1,
         onCreate: (Database db, int newVersion) async {
       await db.execute(
@@ -66,8 +65,6 @@ class PlayerHelper {
     }
   }
 
-  // *** NOVA FUNÇÃO ADICIONADA ***
-  /// Busca um jogador pelo nome.
   Future<Player?> getPlayerByName(String name) async {
     Database dbPlayer = await db;
     List<Map<String, dynamic>> maps = await dbPlayer.query(
@@ -78,7 +75,7 @@ class PlayerHelper {
         dominantFootColumn, marketValueColumn, imgColumn,
         ratingColumn 
       ],
-      where: "$nameColumn = ?", // Busca pelo nome
+      where: "$nameColumn = ?",
       whereArgs: [name],
     );
     if (maps.isNotEmpty) {

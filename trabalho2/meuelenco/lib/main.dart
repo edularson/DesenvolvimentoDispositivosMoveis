@@ -13,10 +13,10 @@ void main() {
       // *** MUDANÇA AQUI ***
       colorScheme: ColorScheme.fromSwatch(
         brightness: Brightness.dark,
-        primarySwatch: Colors.green, // Swatch principal
+        primarySwatch: Colors.green, 
       ).copyWith(
-        primary: Colors.greenAccent[400],    // Verde Neon para elementos interativos
-        secondary: Colors.amber,          // Dourado para detalhes e estrelas
+        primary: Colors.greenAccent[400],    
+        secondary: Colors.amber,          
       ),
 
       appBarTheme: AppBarTheme(
@@ -31,8 +31,8 @@ void main() {
 
       // *** MUDANÇA AQUI ***
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: Colors.greenAccent[400], // Verde
-        foregroundColor: Colors.black87, // <-- Texto escuro para legibilidade
+        backgroundColor: Colors.greenAccent[400], 
+        foregroundColor: Colors.black87, 
       ),
       
       cardTheme: CardThemeData( 
@@ -61,19 +61,18 @@ void main() {
           borderRadius: BorderRadius.circular(10.0),
           borderSide: const BorderSide(color: Colors.grey),
         ),
-        focusedBorder: OutlineInputBorder( // Borda de foco
+        focusedBorder: OutlineInputBorder( 
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.greenAccent[400]!, width: 2.0), // Verde
+          borderSide: BorderSide(color: Colors.greenAccent[400]!, width: 2.0), 
         ),
         filled: true,
         fillColor: Colors.grey[800],
       ),
 
-      // *** MUDANÇA AQUI ***
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.greenAccent[400], // Verde
-          foregroundColor: Colors.black87, // <-- Texto escuro para legibilidade
+          backgroundColor: Colors.greenAccent[400], 
+          foregroundColor: Colors.black87, 
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
           padding: const EdgeInsets.symmetric(vertical: 16),
           textStyle: const TextStyle( 

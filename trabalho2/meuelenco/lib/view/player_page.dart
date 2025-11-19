@@ -209,7 +209,7 @@ class _PlayerPageState extends State<PlayerPage> {
         return IconButton(
           icon: Icon(
             currentRating >= starValue ? Icons.star : Icons.star_border,
-            color: Theme.of(context).colorScheme.secondary, // Dourado 
+            color: Theme.of(context).colorScheme.secondary, 
             size: 30,
           ),
           onPressed: () {
@@ -318,32 +318,21 @@ class _PlayerPageState extends State<PlayerPage> {
     );
   }
 
-  // *** FUNÇÃO ATUALIZADA COM VALIDAÇÃO DE NOME DUPLICADO ***
   void _savePlayer() async {
-    // 1. Validação: Nome Vazio
     String currentName = _editPlayer?.name ?? "";
     if (currentName.isEmpty) {
       _showValidationSnackBar("O nome do jogador é obrigatório!");
       return; 
     }
 
-    // *** NOVA VALIDAÇÃO DE NOME DUPLICADO ***
     Player? existingPlayer = await _helper.getPlayerByName(currentName);
     
     if (existingPlayer != null) {
-      // Um jogador com este nome JÁ existe.
-      // Verificamos se é o MESMO jogador que estamos editando.
       if (existingPlayer.id != _editPlayer?.id) {
-        // É UM JOGADOR DIFERENTE. Bloquear.
         _showValidationSnackBar("Já existe um jogador com este nome!");
-        return; // Para a execução
+        return; 
       }
-      // Se existingPlayer.id == _editPlayer?.id, é o mesmo jogador.
-      // Não há problema, podemos continuar.
     }
-    // *** FIM DA NOVA VALIDAÇÃO ***
-
-    // 2. Validação: Idade (Obrigatória e Mínima)
     if (_editPlayer?.age == null) {
       _showValidationSnackBar("O campo 'Idade' é obrigatório.");
       return; 
@@ -352,28 +341,23 @@ class _PlayerPageState extends State<PlayerPage> {
       _showValidationSnackBar("O jogador deve ter pelo menos 16 anos.");
       return; 
     }
-    // 3. Validação: Posição
     if (_editPlayer?.position == null) {
       _showValidationSnackBar("Por favor, selecione uma posição.");
       return; 
     }
-    // 4. Validação: Nacionalidade
     if (_editPlayer?.nationality == null) {
        _showValidationSnackBar("Por favor, selecione uma nacionalidade.");
        return;
     }
-    // 5. Validação: Número da Camisa
     if (_editPlayer?.shirtNumber == null) {
        _showValidationSnackBar("O número da camisa é obrigatório.");
        return;
     }
-    // 6. Validação: Rating
     if (_editPlayer?.rating == null || _editPlayer!.rating == 0.0) {
        _showValidationSnackBar("Por favor, dê uma avaliação (1 a 5 estrelas) para o jogador.");
        return;
     }
 
-    // Se passou por todas as validações, pode salvar.
     if (_editPlayer?.id != null) {
       await _helper.updatePlayer(_editPlayer!);
     } else {

@@ -16,11 +16,9 @@ class _BuscaTimePageState extends State<BuscaTimePage> {
   bool _isLoading = false;
   bool _primeiraBusca = true;
 
-  // --- PALETA DE CORES PROFISSIONAL ---
   final Color corFundo = const Color(0xFF121212);
   final Color corCard = const Color(0xFF1E1E1E);
   final Color corDestaqueOuro = const Color(0xFFD4AF37);
-  // --- FIM DA PALETA ---
 
   @override
   void dispose() {
@@ -90,7 +88,6 @@ class _BuscaTimePageState extends State<BuscaTimePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: corFundo,
-      // --- APP BAR PROFISSIONAL ---
       appBar: AppBar(
         backgroundColor: corFundo,
         elevation: 0,
@@ -103,7 +100,7 @@ class _BuscaTimePageState extends State<BuscaTimePage> {
           style: GoogleFonts.poppins(textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w600)),
         ),
         centerTitle: true,
-        actions: [], // Ícones removidos
+        actions: [], 
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -111,7 +108,6 @@ class _BuscaTimePageState extends State<BuscaTimePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             SizedBox(height: 10),
-            // --- BARRA DE BUSCA PROFISSIONAL ---
             TextField(
               controller: _controller,
               decoration: InputDecoration(
@@ -167,14 +163,11 @@ class _BuscaTimePageState extends State<BuscaTimePage> {
     }
 
     if (_resultados.isNotEmpty) {
-      // Usando um ListView normal, já que não temos tantos dados
       return ListView.builder(
         key: const Key('lista_times'),
         itemCount: _resultados.length,
         itemBuilder: (context, index) {
           final time = _resultados[index];
-          // Lembre-se: os logos dos times não funcionam na API gratuita
-          // A API envia 'null', então o ícone 🛡️ será exibido.
           final String? logoUrl = time['strTeamBadge'] ?? time['strTeamLogo'] ?? time['strTeamJersey'];
 
           return Card(
