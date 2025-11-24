@@ -43,7 +43,7 @@ O segundo trabalho teve como objetivo a criação de um aplicativo para o gerenc
 
 ---
 
-## ⏳ Trabalho 3: Gerenciador de Jogadores Online (Firebase)
+## Trabalho 3: Gerenciador de Jogadores Online (Firebase)
 
 O terceiro e último trabalho foi uma evolução do projeto 2. A trabalho manteve o foco na gestão de jogadores de futebol, mas mudou a persistência para a nuvem e introduziu controle de acesso.
 
