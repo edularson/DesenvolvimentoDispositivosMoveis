@@ -73,9 +73,6 @@ class _BuscaJogadorPageState extends State<BuscaJogadorPage> {
         _resultados = resultados;
         _isLoading = false;
       });
-      if (resultados.isEmpty) {
-        _showErrorDialog("Nenhum jogador encontrado com o nome '$searchTerm'.");
-      }
     } catch (e) {
       setState(() {
         _isLoading = false;

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "948388890570",
+    "project_id": "trabalho-mobile-3",
+    "storage_bucket": "trabalho-mobile-3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948388890570:android:23044b9451bc4beea6f133",
+        "android_client_info": {
+          "package_name": "com.example.myelenco"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf7dj1WU3QG391VOkDQtN34zAl-hRMYbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

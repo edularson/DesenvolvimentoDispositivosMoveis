@@ -73,9 +73,6 @@ class _BuscaTimePageState extends State<BuscaTimePage> {
         _resultados = resultados;
         _isLoading = false;
       });
-      if (resultados.isEmpty) {
-        _showErrorDialog("Nenhum time encontrado com o nome '$searchTerm'.");
-      }
     } catch (e) {
       setState(() {
         _isLoading = false;

@@ -43,9 +43,20 @@ O segundo trabalho teve como objetivo a criação de um aplicativo para o gerenc
 
 ---
 
-## ⏳ Trabalho 3: (A ser definido)
+## ⏳ Trabalho 3: Gerenciador de Jogadores Online (Firebase)
 
-O terceiro e último trabalho da disciplina ainda não foi iniciado. Esta seção será atualizada assim que o escopo e os requisitos do projeto forem definidos.
+O terceiro e último trabalho foi uma evolução do projeto 2. A trabalho manteve o foco na gestão de jogadores de futebol, mas mudou a persistência para a nuvem e introduziu controle de acesso.
+
+### Principais Funcionalidades
+
+* **Autenticação de Usuários (Firebase):**
+    * Implementação de um sistema seguro de Login e Registro (Sign Up) utilizando e-mail e senha.
+    * Proteção de Rotas: Apenas usuários autenticados conseguem acessar a lista de jogadores e realizar alterações.
+* **Persistência na Nuvem (Cloud Firestore):**
+    * Substituição do banco local (SQLite) pelo Firestore (NoSQL).
+    * Isso permite que o "squad" (time de jogadores criados) seja acessado de qualquer dispositivo, com os dados sincronizados em tempo real.
+* **Funcionalidades Mantidas e Migradas:**
+    * Todo o sistema de criação de "cards de jogadores" (com upload de fotos, definição de atributos e sistema de avaliação/rating) foi adaptado para salvar os dados remotamente.
 
 ### Status
-**Pendente.**
+**Concluído.**
